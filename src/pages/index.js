@@ -50,7 +50,7 @@ export default function Home() {
                   target={'_blank'}
                   className='ml-4 text-lg font-medium capitalize text-dark underline'
                 >
-                  Contact
+                  Something else here?
                 </Link>
               </div>
             </div>
