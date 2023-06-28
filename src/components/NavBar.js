@@ -66,7 +66,6 @@ const NavBar = () => {
         >
           <TwitterIcon />
         </motion.a>
-       
       </nav>
       <div className='absolute left-[50%] top-2 translate-x-[-50%]'>
         <Logo />
