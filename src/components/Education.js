@@ -38,7 +38,7 @@ const Education = () => {
       <div ref={ref} className='w-[75%] mx-auto relative'>
         <motion.div
           style={{ scaleY: scrollYProgress }}
-          className='absolute left-9 top-0 w-[4px] h-full bg-dark origin-top'
+          className='dark:bg-light absolute left-9 top-0 w-[4px] h-full bg-dark origin-top'
         />
 
         <ul className='w-full flex flex-col items-start justify-between ml-4'>

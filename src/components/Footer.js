@@ -19,9 +19,7 @@ const Footer = () => {
             JasonSolace
           </Link>
         </div>
-        <Link href='/' className='underline underline-offset-2'>
-          Say Hello
-        </Link>
+        <Link href='/' className='underline underline-offset-2'></Link>
       </Layout>
     </footer>
   );
