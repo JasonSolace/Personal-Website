@@ -40,12 +40,12 @@ const about = () => {
         <title>Jason Armenta | About Page</title>
         <meta name='description' content='any description' />
       </Head>
-      <main className='flex w-full flex-col item-center justify-center'>
+      <main className='dark:text-light flex w-full flex-col item-center justify-center'>
         <Layout className='pt-16'>
           <AnimatedText text='Passion Fuels Purpose!' className='mb-16' />
           <div className='grid w-full grid-cols-8 gap-16'>
             <div className='col-span-3 flex flex-col items-start justify-start'>
-              <h2 className='mb-4 text-lg font-bold uppercase text-dark/75'>
+              <h2 className='dark:text-light mb-4 text-lg font-bold uppercase text-dark/75'>
                 Biography
               </h2>
               <p className='font-medium'>
@@ -68,12 +68,16 @@ const about = () => {
                 your next project.
               </p>
             </div>
-            <div className='col-span-3 relative h-max rounded-2xl border-2 border-solid border-dark bg-light p-8'>
-              <div className='absolute top-0 -right-3 -z-10 w-[102%] h-[103%] rounded-[2rem] bg-dark' />
+            <div className='dark:bg-dark dark:border-light col-span-3 relative h-max rounded-2xl border-2 border-solid border-dark bg-light p-8'>
+              <div className='dark:bg-light absolute top-0 -right-3 -z-10 w-[102%] h-[103%] rounded-[2rem] bg-dark' />
               <Image
                 src={profilePic}
                 alt='JasonSolace'
                 className='w-full h-auto rounded-2xl'
+                priority
+                sizes='(max-width: 768px) 100vw,
+                (max-width: 1200px) 50vw,
+                33vw'
               />
             </div>
 
@@ -82,7 +86,7 @@ const about = () => {
                 <span className='inline-block text-7xl font-bold'>
                   <AnimatedNumbers value={50} />+
                 </span>
-                <h2 className='text-xl font-medium capitalize text-dark/75'>
+                <h2 className='dark:text-light dark:opacity-75 text-xl font-medium capitalize text-dark/75'>
                   items of wow
                 </h2>
               </div>
@@ -91,7 +95,7 @@ const about = () => {
                 <span className='inline-block text-7xl font-bold'>
                   <AnimatedNumbers value={20} />+
                 </span>
-                <h2 className='text-xl font-medium capitalize text-dark/75'>
+                <h2 className='dark:text-light dark:opacity-75 text-xl font-medium capitalize text-dark/75'>
                   items completed
                 </h2>
               </div>
@@ -100,7 +104,7 @@ const about = () => {
                 <span className='inline-block text-7xl font-bold'>
                   <AnimatedNumbers value={1} />+
                 </span>
-                <h2 className='text-xl font-medium capitalize text-dark/75'>
+                <h2 className='dark:text-light dark:opacity-75 text-xl font-medium capitalize text-dark/75'>
                   years of something
                 </h2>
               </div>

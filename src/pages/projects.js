@@ -10,11 +10,11 @@ import project1 from '../../public/images/projects/crypto-screener-cover-image.j
 const FeaturedProject = ({ type, title, summary, img, link, github }) => {
   return (
     <article
-      className='w-full flex items-center justify-between relative rounded-br-2xl
+      className='dark:bg-dark dark:border-light w-full flex items-center justify-between relative rounded-br-2xl
       rounded-3xl border border-solid border-dark bg-light shadow-2xl p-12'
     >
       <div
-        className='absolute top-0 -right-3 -z-10 w-full h-[103%] rounded-[2.5rem] bg-dark
+        className='dark:bg-light absolute top-0 -right-3 -z-10 w-[101%] h-[103%] rounded-[2.5rem] bg-dark
       rounded-br-3xl'
       />
       <Link
@@ -22,18 +22,30 @@ const FeaturedProject = ({ type, title, summary, img, link, github }) => {
         target='_blank'
         className='w-1/2 cursor-pointer overflow-hidden rounded-lg'
       >
-        <Image src={img} alt={title} className='w-full h-auto' />
+        <Image
+          src={img}
+          alt={title}
+          className='w-full h-auto'
+          priority
+          sizes='(max-width: 768px) 100vw,
+                (max-width: 1200px) 50vw,
+                50vw'
+        />
       </Link>
       <div className='w-1/2 flex flex-col items-start justify-between pl-6'>
-        <span className='text-primary font-medium text-xl'>{type}</span>
+        <span className='dark:text-primaryDark text-primary font-medium text-xl'>
+          {type}
+        </span>
         <Link
           href={link}
           target='_blank'
           className='hover:underline underline-offset-2'
         >
-          <h2 className='my-2 w-full text-left text-4xl font-bold'>{title}</h2>
+          <h2 className='dark:text-light my-2 w-full text-left text-4xl font-bold'>
+            {title}
+          </h2>
         </Link>
-        <p className='my-2 font-medium text-dark'>{summary}</p>
+        <p className='dark:text-light my-2 font-medium text-dark'>{summary}</p>
         <div className='mt-2 flex items-center'>
           <Link href={github} target='_blank' className='w-10'>
             <GithubIcon />
@@ -41,7 +53,7 @@ const FeaturedProject = ({ type, title, summary, img, link, github }) => {
           <Link
             href={link}
             target='_blank'
-            className='ml-4 rounded-lg bg-dark text-light p-2 px-6 text-lg font-semibold'
+            className='dark:bg-light dark:text-dark ml-4 rounded-lg bg-dark text-light p-2 px-6 text-lg font-semibold'
           >
             Visit Project
           </Link>
@@ -54,11 +66,11 @@ const FeaturedProject = ({ type, title, summary, img, link, github }) => {
 const Project = ({ type, title, img, link, github }) => {
   return (
     <article
-      className='w-full flex flex-col items-center justify-center rounded-2xl
+      className='dark:border-light dark:bg-dark w-full flex flex-col items-center justify-center rounded-2xl
     border border-solid border-dark bg-light p-6 relative'
     >
       <div
-        className='absolute top-0 -right-3 -z-10 w-full h-[103%] rounded-[2rem] bg-dark
+        className='dark:bg-light absolute top-0 -right-3 -z-10 w-full h-[103%] rounded-[2rem] bg-dark
       rounded-br-3xl'
       />
       <Link
@@ -69,13 +81,17 @@ const Project = ({ type, title, img, link, github }) => {
         <Image src={img} alt={title} className='w-full h-auto' />
       </Link>
       <div className='w-full flex flex-col items-start justify-between mt-4'>
-        <span className='text-primary font-medium text-xl'>{type}</span>
+        <span className='dark:text-primaryDark text-primary font-medium text-xl'>
+          {type}
+        </span>
         <Link
           href={link}
           target='_blank'
           className='hover:underline underline-offset-2'
         >
-          <h2 className='my-2 w-full text-left text-3xl font-bold'>{title}</h2>
+          <h2 className='dark:text-light my-2 w-full text-left text-3xl font-bold'>
+            {title}
+          </h2>
         </Link>
         <div className='w-full mt-2 flex items-center justify-between'>
           <Link
@@ -101,7 +117,7 @@ const projects = () => {
         <title>Jason Armenta | Projects </title>
         <meta name='description' content='more description! Edit ME!' />
       </Head>
-      <main className='w-full mb-16 flex flex-col items-center justify-center'>
+      <main className='dark:text-light w-full mb-16 flex flex-col items-center justify-center'>
         <Layout className='pt-16'>
           <AnimatedText
             text='Imagination Trumps Knowledge!'
