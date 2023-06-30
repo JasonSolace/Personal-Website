@@ -9,7 +9,6 @@ const NavTitle = ({ currentPath }) => {
 
   if (router.asPath != currentPath) {
     setChangeTitle(true);
-    console.log('I ran!');
   }
 
   useEffect(() => {}, [changeTitle]);

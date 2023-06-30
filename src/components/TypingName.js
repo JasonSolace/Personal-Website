@@ -58,10 +58,6 @@ const TypingName = ({ name }) => {
     deleteCharacter();
   }, [name, nameToBeTyped, typedName]);
 
-  useEffect(() => {
-    console.log(typedName);
-  }, [typedName]);
-
   return (
     <div className='relative inline-block text-7xl self-center'>
       <div className='flex'>

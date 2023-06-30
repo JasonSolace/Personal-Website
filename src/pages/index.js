@@ -6,7 +6,8 @@ import AnimatedText from '@/components/AnimatedText';
 import Link from 'next/link';
 import { LinkArrow } from '@/components/Icons';
 import ContactMe from '@/components/ContactMe';
-import lightBulb from '../../public/images/svgs/miscellaneous_icons_1.svg';
+import lightBulbOn from '../../public/images/svgs/lightbulb-on.svg';
+import lightBulbOff from '../../public/images/svgs/lightbulb-off.svg';
 
 export default function Home() {
   return (
@@ -31,14 +32,14 @@ export default function Home() {
             </div>
             <div className='w-1/2 flex flex-col items-center self-center'>
               <AnimatedText
-                text='Turning Vision Into Reality With Code And Design.'
+                text='Bridging Cultures through Innovative Code and Design'
                 className='!text-6xl !text-left'
               />
               <p className='my-4 text-base font-medium'>
-                As a skilled full-stack developer, I am dedicated to turning
-                ideas into innovative web applications. Explore my latest
-                projects and articles, showcasing my expertise in React.js and
-                web development.
+                Embark on a digital journey with a skilled full-stack developer,
+                blending code and creativity seamlessly. Explore a portfolio of
+                innovative web applications, meticulously crafted with mastery
+                in React.js and the art of web development.
               </p>
               <div className='flex items-center self-start mt-2'>
                 <Link
@@ -63,8 +64,16 @@ export default function Home() {
         </Layout>
         <ContactMe />
         <div className='absolute right-8 bottom-8 inline-block w-24'>
-          <Image src={lightBulb} alt='JasonSolace' className='w-full h-auto' />-
-          .
+          <Image
+            src={lightBulbOn}
+            alt='JasonSolace'
+            className='w-full h-auto dark:hidden'
+          />
+          <Image
+            src={lightBulbOff}
+            alt='JasonSolace'
+            className='w-full h-auto hidden dark:visible'
+          />
         </div>
       </main>
     </>
