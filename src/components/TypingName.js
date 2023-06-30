@@ -1,11 +1,6 @@
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 
-const ChangeName = ({}) => {
-  const router = useRouter();
-  console.log(router.asPath);
-};
-
 const TypingName = ({ name }) => {
   const [typedName, setTypedName] = useState('');
   const [currentlyDeleting, setCurrentlyDeleting] = useState(false);
@@ -14,76 +9,53 @@ const TypingName = ({ name }) => {
 
   //Handles the typing of the title/name
   useEffect(() => {
-    let timer1;
+    if (typedName.length >= name.length || currentlyDeleting) {
+      return;
+    }
 
     const typeNextLetter = () => {
-      if (typedName.length >= name.length || currentlyDeleting) {
-        return; //typedName has all of the values of name
-      }
-
       const splitName = name.split('');
-
-      timer1 = setTimeout(() => {
-        //Depending on the size of typedName, we slowly add values to it based on timer1
-        setTypedName((prevTypedName) =>
-          prevTypedName.concat(splitName[prevTypedName.length])
-        );
-      }, 200);
+      setTypedName((prevTypedName) =>
+        prevTypedName.concat(splitName[prevTypedName.length])
+      );
     };
 
-    timer1 = setTimeout(typeNextLetter, 0); //Start the initial typing
+    const timer = setTimeout(typeNextLetter, 200);
 
-    return () => {
-      clearTimeout(timer1);
-    };
+    return () => clearTimeout(timer);
   }, [currentlyDeleting, name, typedName]);
 
   //Handles the blinking '|' character
   useEffect(() => {
-    let timer2;
+    const timer = setInterval(() => {
+      setCursorVisible((prev) => !prev);
+    }, 500);
 
-    const flashCursor = () => {
-      setCursorVisible((cursorVisible) => !cursorVisible);
-    };
-
-    timer2 = setInterval(flashCursor, 500); // Start the cursor flashing
-
-    return () => {
-      clearInterval(timer2);
-    };
-  }, [cursorVisible]);
+    return () => clearInterval(timer);
+  }, []);
 
   //Handles if the word has changed or is mistyped mid generating
   useEffect(() => {
-    let timer3;
-
-    const deleteCurrentlyTyped = () => {
-      let i = typedName.length;
-
-      const deleteCharacter = () => {
-        if (i >= 0) {
-          setTypedName((prevTypedName) => prevTypedName.slice(0, i));
-          i--;
-          setTimeout(deleteCharacter, 200); // Delay between iterations (adjust as needed)
-
-          if (i <= 0) {
-            setCurrentlyDeleting(false);
-          }
-        }
-      };
-
-      deleteCharacter();
-    };
-
-    if (nameToBeTyped !== name) {
-      setCurrentlyDeleting(true);
-      deleteCurrentlyTyped();
-      setNameToBeTyped(name);
+    if (nameToBeTyped === name) {
+      return;
     }
 
-    return () => {
-      clearTimeout(timer3);
+    setCurrentlyDeleting(true);
+    setNameToBeTyped(name);
+
+    let i = typedName.length;
+
+    const deleteCharacter = () => {
+      if (i >= 0) {
+        setTypedName((prevTypedName) => prevTypedName.slice(0, i));
+        i--;
+        setTimeout(deleteCharacter, 200);
+      } else {
+        setCurrentlyDeleting(false);
+      }
     };
+
+    deleteCharacter();
   }, [name, nameToBeTyped, typedName]);
 
   useEffect(() => {
@@ -94,7 +66,7 @@ const TypingName = ({ name }) => {
     <div className='relative inline-block text-7xl self-center'>
       <div className='flex'>
         <div>{typedName}</div>
-        <div>{cursorVisible ? '|' : ''}</div>
+        <div>{cursorVisible || currentlyDeleting ? '|' : ''}</div>
       </div>
     </div>
   );
