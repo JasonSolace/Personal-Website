@@ -5,7 +5,6 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import project1 from '../../public/images/projects/crypto-screener-cover-image.jpg';
 
 const FeaturedProject = ({ type, title, summary, img, link, github }) => {
   return (
@@ -128,7 +127,7 @@ const projects = () => {
             <div className='col-span-12'>
               <FeaturedProject
                 title={'First Featured Projects'}
-                img={project1}
+                img={'/'}
                 link={'/'}
                 github={'/'}
                 summary={
@@ -140,7 +139,7 @@ const projects = () => {
             <div className='col-span-6'>
               <Project
                 title={'Project 1'}
-                img={project1}
+                img={'/'}
                 link={'/'}
                 github={'/'}
                 type='Project'
