@@ -62,7 +62,11 @@ const TypingName = ({ name }) => {
 		<div className="relative inline-block text-7xl self-center">
 			<div className="flex">
 				<div>{typedName}</div>
-				<div>{cursorVisible || currentlyDeleting ? "|" : ""}</div>
+				<div
+					style={{ display: "inline-block", width: "1ch", textAlign: "center" }}
+				>
+					<div>{cursorVisible || currentlyDeleting ? "|" : ""}</div>
+				</div>
 			</div>
 		</div>
 	);
